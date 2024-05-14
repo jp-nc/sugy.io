@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Click to chat</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" 
+  rel="stylesheet" />
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-indigo.min.css" />
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<style>
+h2 {
+	color: rgb(144, 182, 73);
+	display: inline-block;
+	vertical-align: middle;
+}
+summary {
+	cursor:pointer;
+}
+
+.mycard {
+	margin-top: 50px;
+	width: 90%;
+	margin-bottom: 50px;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+}
+
+.border {
+	margin-top: 5px;
+}
+
+.box {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	justify-content: space-between;
+	gap: 50px;
+}
+
+.autoWidth {
+	width: auto;
+	max-width: 100%;
+}
+
+</style>
+</head>
+
+
+<body class="center">
+<div class="mycard mdl-card mdl-shadow--2dp"><class="box mdl-card__supporting-text">
+	<div>
+
+		<p center><br>
+    
+                <center><button onclick="toggleChangelog(); return false;">CLICK 8) </button>
+
+		
+		<pre id="changelog" style="white-space: pre-wrap;" hidden>
+La amistad.. la verdadera amistad es... 
+Con quien peleas por cualquier tonteria... 
+Con quien puedes pensar en voz alta... 
+Con quien el silencio no es incomodo... 
+Con quien hace que sonrias aun cuando estas triste... 
+Y tu sughey, tu eres para mi una amiga...
+Mi mejor amiga!! con quien puedo compartir cualquier tonteria 🙌
+MUCHAS GRACIAS!
+POR CADA SALIDA!...
+POR CADA CAFECITO QUE TOMAMOS JUNTOS!
+POR CADA BUEN MOMENTO QUE COMPARTIMOS!
+Y SOBRE TODO!!...
+MUCHAS GRACIAS POR TU AMISTAD!! 
+TE QUIERO MUCHO SUGY 😄🙌🙌!!
+
+^_^
+		</pre>
+	</center></p>
+	</div>
+</div>
+<script>
+
+// ---------- onle-line utils ----------
+function eId(id){ return document.getElementById(id) || document.createElement('div') }
+function reload(){ window.location.reload(false) } // (false, aka don't fetch again, because the page didn't change)
+
+
+// utility to group an array of pairs from the first group
+// [ [1,2], [1,3], [4,5] ] -> [ [1,[2,3]], [4,[5]] ]
+function group(data){
+	return Object.entries(data.reduce((group, [a, b]) => {
+			if(!(a in group)) group[a] = [];
+			group[a].push(b);
+			return group;
+		}, {}));
+}
+
+// ---------- settings ----------
+
+let KEY_PREFIX_SETTING = "setting_"
+
+// configured settings: name => lambda to apply it
+let settings = {
+	"hideText": v => eId("details").open = v !== "false"
+}
+
+// changes and saves a setting to a value
+function changeSetting(id, v){
+	settings[id](""+v);
+	localStorage.setItem(KEY_PREFIX_SETTING + id, v);
+}
+
+// loads all settings from storage
+function loadSettings(){
+	for(setting in settings){
+		settings[setting](localStorage.getItem(KEY_PREFIX_SETTING + setting));
+	}
+}
+
+
+// ---------- info ----------
+
+// toggles the changelog visibility
+function toggleChangelog(){
+	eId('changelog').hidden = !eId('changelog').hidden
+}
+</script>
+</body>
+</html>
