@@ -12,7 +12,9 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mochiy Pop P One', sans-serif;
-    background-color: #f2acac;
+    background-image: url("https://github.com/jp-nc/sugy.io/blob/main/assets/css/porsche.jpg?raw=true");
+    background-position:center center;
+
 }
 
 input#open {
